@@ -5,13 +5,47 @@
     <h2 class="login-title">LOGIN</h2>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-area">
-      <input type="email" placeholder="E-MAIL/CPF" formControlName="email" />
-      <input type="password" placeholder="SENHA" formControlName="senha" />
+      <input 
+        type="text" 
+        placeholder="E-MAIL ou CPF" 
+        formControlName="email" 
+        [class.invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+      />
+      
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error-message">
+        E-mail ou CPF é obrigatório
+      </div>
 
-      <button type="submit" class="btn-primary">CONFIRMAR</button>
+      <input 
+        type="password" 
+        placeholder="SENHA" 
+        formControlName="senha"
+        [class.invalid]="form.get('senha')?.invalid && form.get('senha')?.touched"
+      />
+      
+      <div *ngIf="form.get('senha')?.invalid && form.get('senha')?.touched" class="error-message">
+        Senha é obrigatória
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn-primary"
+        [disabled]="loading"
+      >
+        {{ loading ? 'CARREGANDO...' : 'CONFIRMAR' }}
+      </button>
     </form>
 
-   
+  
+    <!-- CREDENCIAIS PARA TESTE -->
+    <div class="test-credentials">
+      <h4>Credenciais de Teste:</h4>
+      <ul>
+        <li><strong>Aluno:</strong> aluno@teste.com / 123456</li>
+        <li><strong>Professor:</strong> professor@teste.com / 123456</li>
+        <li><strong>Nutricionista:</strong> nutri@teste.com / 123456</li>
+      </ul>
+    </div>
   </div>
 
   <!-- COLUNA DA IMAGEM -->
