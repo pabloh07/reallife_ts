@@ -1,0 +1,270 @@
+ @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+:host {
+
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--main-dark);
+  color: var(--text-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------------------------- */
+/* NAVBAR */
+/* ---------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  font-family: 'Bebas Neue', sans-serif;
+
+}
+
+.menu-icon {
+  margin-right: 15px;
+}
+
+.menu-icon div {
+  width: 50px;
+  height: 4px;
+  background-color: var(--text-light);
+  margin: 5px 0;
+  border-radius: 2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 40px;
+}
+
+/* [CORREÇÃO 1] - Adicionando estilos para os links da navbar */
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  letter-spacing: 4px;
+  font-weight: 900;
+  font-size: 34px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+/* Fim da Correção 1 */
+
+.user-icon {
+  margin-left: 20px;
+}
+
+.user-icon i {
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+/* ---------------------------------- */
+/* CONTEÚDO PRINCIPAL (OVERLAP) */
+/* ---------------------------------- */
+
+.content-wrapper {
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* [CORREÇÃO 2] - Definindo o z-index do container das imagens */
+.main-visual-area {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  min-height: 500px;
+  z-index: 1; /* Coloca este container na camada '1' */
+}
+/* Fim da Correção 2 */
+
+/* [CORREÇÃO 3] - Definindo o z-index do container de sobreposição */
+.gym-images-overlap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Garante que as imagens fiquem na camada '1' */
+}
+/* Fim da Correção 3 */
+
+.gym-images-overlap img {
+  position: absolute;
+  border-radius: 5px;
+  top: 300px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.gym-images-overlap .img1 {
+  width: 60%;
+  height: 650px;
+  width: 1100px;
+  top: 10px;
+  left: -300px;
+  z-index: 1;
+  filter: brightness(0.9) saturate(1.1);
+  border-radius: 50px;
+}
+
+.gym-images-overlap .img2 {
+  width: 70%;
+  height: 650px;
+  width: 1100px;
+  top: -200px;
+  right: -350px;
+  z-index: 2; /* img2 fica na frente da img1 */
+  filter: brightness(0.9) saturate(1.2) hue-rotate(200deg);
+  border-radius: 50px;
+}
+
+/* ---------------------------------- */
+/* LOGO (Texto e Círculo) */
+/* ---------------------------------- */
+
+.logo {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  z-index: 5; /* [FIX] Logo fica na camada '5' (NA FRENTE do .main-visual-area) */
+}
+
+.logo-text {
+  top: -60px;
+  font-size: 80px;
+  letter-spacing: 5px;
+  font-weight: 900;
+  color: var(--text-light);
+  margin: 0;
+  position: relative;
+  z-index: 6; /* Texto na frente do círculo */
+}
+.logo1{
+  position: relative;
+  top: -320px;
+  left: -10px;
+  width: 480px;
+  height: 480px;
+  z-index: 5; /* Círculo atrás do texto */
+  opacity: 0.3;
+
+
+}
+
+
+/* ---------------------------------- */
+/* BOTÃO ASSINATURA */
+/* ---------------------------------- */
+
+.btn-assinatura {
+  position: absolute;
+  bottom: 130px;
+  right: 280px;
+  z-index: 10; /* [FIX] Botão na camada '10' (NA FRENTE de tudo) */
+
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  font-size: 16px;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 240px;
+  height: 60px;
+}
+
+.btn-assinatura:hover {
+  background-color: #ff6a1a;
+  transform: scale(1.05);
+}
+
+/* ---------------------------------- */
+/* RESPONSIVIDADE */
+/* ---------------------------------- */
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 20px 20px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .content-wrapper {
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+
+  .main-visual-area {
+    width: 95%;
+    min-height: auto;
+  }
+
+  .gym-images-overlap {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .gym-images-overlap img {
+    position: static;
+    width: 100%;
+    height: 250px;
+  }
+
+  .logo {
+    position: static;
+    margin-bottom: 20px;
+    align-self: flex-start;
+    left: 0;
+    top: 0;
+    padding-left: 20px;
+  }
+
+  .logo-shape {
+    display: none;
+  }
+
+  .logo-text {
+    font-size: 36px;
+  }
+
+  .btn-assinatura {
+    position: static;
+    margin: 30px auto;
+    width: 80%;
+    text-align: center;
+    border-radius: 25px;
+  }
+}

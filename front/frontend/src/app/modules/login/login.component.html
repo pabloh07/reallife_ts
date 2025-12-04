@@ -1,0 +1,25 @@
+<div class="login-container">
+
+  <!-- COLUNA DO FORMULÁRIO -->
+  <div class="login-box">
+    <h2 class="login-title">LOGIN</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-area">
+      <input type="email" placeholder="E-MAIL/CPF" formControlName="email" />
+      <input type="password" placeholder="SENHA" formControlName="senha" />
+
+      <button type="submit" class="btn-primary">CONFIRMAR</button>
+    </form>
+
+   
+  </div>
+
+  <!-- COLUNA DA IMAGEM -->
+  <div class="login-image">
+    <div class="overlay">
+      <h1 class="logo">REALLIFE</h1>
+      <img src="../../../assets/logo2.png" alt="Logo" class="logo2" />
+    </div>
+  </div>
+
+</div>
